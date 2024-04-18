@@ -1,0 +1,6 @@
+`hello, world`
+`hello,
+world`
+`Hora atual: $ !`
+`Hora atual: ${agora} horas!`
+`Hora atual: ${$agora} horas n'agua!`
