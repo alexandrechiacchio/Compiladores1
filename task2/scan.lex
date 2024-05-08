@@ -10,6 +10,8 @@ int token;
 
 string lexema;
 
+void OP();
+void P();
 void A();
 void E();
 void E_linha();
@@ -19,7 +21,7 @@ void F();
 void casa( int );
 
 
-enum { CDOUBLE = 256, CSTR, ID };
+enum { CDOUBLE = 256, CSTR, ID, PRINT };
 
 map<int,string> nome_tokens = {
   { CDOUBLE, "double" },
@@ -44,6 +46,7 @@ WS	[ \n\r\t]
 
 {WS}	
 
+"print"     {lexema = yytext; return ( PRINT ); }
 {DOUBLE}   { lexema = yytext; return ( CDOUBLE ); }
 {STR}     { lexema = yytext; return ( CSTR ); }
 
@@ -72,6 +75,28 @@ string nome_token( int token ) {
     r = token;
     return r;
   }
+}
+
+void OP(){
+  switch (token){
+    case PRINT:
+      P();
+      casa(';');
+      OP();
+      break;
+    case CDOUBLE:
+    case CSTR:
+      A();
+      casa(';');
+      OP();
+      break;
+  }
+}
+
+void P(){
+  casa( PRINT );
+  E()
+  print("print #");
 }
 
 void A() {
@@ -139,10 +164,10 @@ void casa( int esperado ) {
 
 int main() {
   token = next_token();
-  A();
+  OP();
   
   if( token == 0 )
-    cout << "Sintaxe ok!" << endl;
+    cout << "\nSintaxe ok!" << endl;
   else
     cout << "Caracteres encontrados após o final do programa" << endl;
   
