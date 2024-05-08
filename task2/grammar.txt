@@ -6,20 +6,33 @@ ATR  -> id { Print( lexema ); } = E { Print( "="); }
 
 ARGS   -> ARGFST ARGSREM
 ARGFST -> E
-ARGSRE ->  , E 
+ARGSRE ->  , E
          | , E ARGSREM
          | ε
 
 E  -> T E'
-    | id(ARGS)
 
 E' -> + T { Print( "+"); } E'
     | - T { Print( "-"); } E'
+    | (ARGS)
     | ε
-T -> F T'
-T' -> * F { Print( "*"); } T'
-    | / F { Print( "/"); } T'
+
+T -> H T'
+T' -> * H { Print( "*"); } T'
+    | / H { Print( "/"); } T'
     | ε
+
+H -> FACT H'
+    | { Print( "0"); } - FACT { Print( "-"); }
+
+H' -> ^ FACT { Print( " power #"); } H'
+     ε
+
+FACT -> F FACT'
+
+FACT' -> ! { Print( " power #"); }
+       | ε
+
 F -> id { Print(lexema + "@"); }
    | num { Print( lexema ); }
    | ( E )
