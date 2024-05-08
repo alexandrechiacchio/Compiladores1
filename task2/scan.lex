@@ -8,24 +8,28 @@ using namespace std;
 
 int token;
 
-void P();
+string lexema;
+
 void A();
-void R();
-void L();
-void V();
-void VS();
+void E();
+void E_linha();
 void T();
+void T_linha();
+void F();
 void casa( int );
 
-enum { tk_int = 256, tk_char, tk_double, tk_id, tk_cte_int };
+
+enum { CDOUBLE = 256, CSTR, ID };
 
 map<int,string> nome_tokens = {
-  { tk_int, "int" },
-  { tk_char, "char" },
-  { tk_double, "double" },
-  { tk_id, "nome de identificador" },
-  { tk_cte_int, "constante inteira" }
+  { CDOUBLE, "double" },
+  { CSTR, "string" },
+  { ID, "nome de identificador" }
 };
+
+void print(string s){
+  cout << s << " ";
+}
 
 %}
 
@@ -34,25 +38,29 @@ LETRA   [A-Za-z_]
 DOUBLE  {DIGITO}+("."{DIGITO}+)?
 ID      {LETRA}({LETRA}|{DIGITO})*
 STR   \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
+WS	[ \n\r\t]
 
 %%
 
-"\t"       { coluna += 4; }
-" "        { coluna++; }
-"\n"     { linha++; coluna = 1; }
+{WS}	
 
-{DOUBLE}   { return token( CDOUBLE ); }
-{STR}     { return token( CSTR ); }
+{DOUBLE}   { lexema = yytext; return ( CDOUBLE ); }
+{STR}     { lexema = yytext; return ( CSTR ); }
 
 
-{ID}       { return token( ID ); }
+{ID}       { lexema = yytext; return ( ID ); }
 
-.          { return token( *yytext ); }
+.          { lexema = yytext; return ( *yytext ); }
 
 %%
 
 int next_token() {
   return yylex();
+}
+
+inline void erro( string msg ) {
+  cout << msg << endl;
+  exit( 0 ); 
 }
 
 string nome_token( int token ) {
@@ -66,56 +74,55 @@ string nome_token( int token ) {
   }
 }
 
-void P() {
-  if( token == '*' ) {
-    casa( '*' );
-    P();
-  }
-}
-
 void A() {
-  if( token == '[' ) {
-    casa( '[' );
-    casa( tk_cte_int );
-    casa( ']' );
-    A();
-  }
+// Guardamos o lexema pois a função 'casa' altera o seu valor.
+  string temp = lexema; 
+  casa( ID );
+  print( temp );
+  casa( '=' );
+  E();
+  print( "= ^" );
 }
 
-void R() {
-  if( token == ',' ) {
-    casa( ',' );
-    P();
-    casa( tk_id );
-    A();
-    R();
-  }
+void E() {
+  T();
+  E_linha();
 }
 
-void L() {
-  P();
-  casa( tk_id );
-  A();
-  R();
+void E_linha() {
+  switch( token ) {
+    case '+' : casa( '+' ); T(); print( "+"); E_linha(); break;
+    case '-' : casa( '-' ); T(); print( "-"); E_linha(); break;
+  }
 }
 
 void T() {
+  F();
+  T_linha();
+}
+
+void T_linha() {
   switch( token ) {
-    case tk_int : casa( tk_int ); break;
-    case tk_char : casa( tk_char ); break;
-    case tk_double : casa( tk_double ); break;
-    
-    default:
-      cout << "Tipo esperado "  
-	   << " , encontrado: " << nome_token( token ) << endl;
-    exit( 1 );
+    case '*' : casa( '*' ); F(); print( "*"); T_linha(); break;
+    case '/' : casa( '/' ); F(); print( "/"); T_linha(); break;
   }
 }
 
-void V() {
-  T();  
-  L(); 
-  casa( ';' );
+void F() {
+  switch( token ) {
+    case ID : {
+      string temp = lexema;
+      casa( ID ); print( temp + "@" ); } 
+      break;
+    case CDOUBLE : {
+      string temp = lexema;
+      casa( CDOUBLE ); print( temp ); }
+      break;
+    case '(': 
+      casa( '(' ); E(); casa( ')' ); break;
+    default:
+      erro( "Operando esperado, encontrado " + lexema );
+  }
 }
 
 
@@ -129,20 +136,10 @@ void casa( int esperado ) {
   }
 }
 
-void VS() {
-  switch( token ) { // verificando o próximo símbolo da entrada
-    case tk_int:
-    case tk_char:
-    case tk_double:
-      V();
-      VS();
-      break;
-  }
-}
 
 int main() {
   token = next_token();
-  VS();
+  A();
   
   if( token == 0 )
     cout << "Sintaxe ok!" << endl;

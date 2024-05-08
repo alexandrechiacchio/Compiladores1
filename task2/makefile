@@ -1,6 +1,9 @@
 all: saida entrada.txt
 	./saida < entrada.txt
 
+tst: saida
+	./saida
+
 lex.yy.c: scan.lex
 	lex scan.lex
 
