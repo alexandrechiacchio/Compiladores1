@@ -1,14 +1,14 @@
-all: saida entrada.txt
-	./saida < entrada.txt
+all: out input.txt
+	./out < input.txt
 
-tst: saida
-	./saida
+tst: out
+	./out
 
 lex.yy.c: scan.lex
 	lex scan.lex
 
-saida: lex.yy.c lex.yy.c
-	g++ -Wall -std=c++17 lex.yy.c -o saida -lfl
+out: lex.yy.c lex.yy.c
+	g++ -Wall -std=c++17 lex.yy.c -o out -lfl
 
 clean:
-	rm saida lex.yy.c
+	rm out lex.yy.c
