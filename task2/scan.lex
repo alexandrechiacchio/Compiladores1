@@ -17,16 +17,25 @@ void E();
 void E_linha();
 void T();
 void T_linha();
+void H();
+void H_linha();
+void FACT();
+void FACT_linha();
 void F();
 void casa( int );
+void ARGS();
+void ARGFST();
+void ARGSREST();
 
 
-enum { CDOUBLE = 256, CSTR, ID, PRINT };
+
+enum { CDOUBLE = 256, CSTR, ID, PRINT, FUNC };
 
 map<int,string> nome_tokens = {
   { CDOUBLE, "double" },
   { CSTR, "string" },
-  { ID, "nome de identificador" }
+  { ID, "nome de identificador" },
+  { PRINT, "print"}
 };
 
 void print(string s){
@@ -44,7 +53,7 @@ WS	[ \n\r\t]
 
 %%
 
-{WS}	
+{WS}
 
 "print"     {lexema = yytext; return ( PRINT ); }
 {DOUBLE}   { lexema = yytext; return ( CDOUBLE ); }
@@ -63,7 +72,7 @@ int next_token() {
 
 inline void erro( string msg ) {
   cout << msg << endl;
-  exit( 0 ); 
+  exit( 0 );
 }
 
 string nome_token( int token ) {
@@ -71,7 +80,7 @@ string nome_token( int token ) {
     return nome_tokens[token];
   else {
     string r;
-    
+
     r = token;
     return r;
   }
@@ -82,12 +91,15 @@ void OP(){
     case PRINT:
       P();
       casa(';');
+      /* cout << '\n'; */
       OP();
       break;
     case CDOUBLE:
     case CSTR:
+    case ID:
       A();
       casa(';');
+      /* cout << '\n'; */
       OP();
       break;
   }
@@ -95,15 +107,14 @@ void OP(){
 
 void P(){
   casa( PRINT );
-  E()
+  E();
   print("print #");
 }
 
 void A() {
 // Guardamos o lexema pois a função 'casa' altera o seu valor.
-  string temp = lexema; 
-  casa( ID );
-  print( temp );
+  string temp = lexema;
+  casa( ID ); print( temp );
   casa( '=' );
   E();
   print( "= ^" );
@@ -114,6 +125,26 @@ void E() {
   E_linha();
 }
 
+void ARGS(){
+  ARGFST();
+  ARGSREST();
+}
+
+void ARGFST(){
+  E();
+}
+
+void ARGSREST(){
+  switch ( token ){
+    case ',':
+      casa( ',' );
+      E();
+      ARGSREST();
+      break;
+  }
+
+}
+
 void E_linha() {
   switch( token ) {
     case '+' : casa( '+' ); T(); print( "+"); E_linha(); break;
@@ -122,28 +153,69 @@ void E_linha() {
 }
 
 void T() {
-  F();
+  H();
   T_linha();
 }
 
 void T_linha() {
   switch( token ) {
-    case '*' : casa( '*' ); F(); print( "*"); T_linha(); break;
-    case '/' : casa( '/' ); F(); print( "/"); T_linha(); break;
+    case '*' : casa( '*' ); H(); print( "*"); T_linha(); break;
+    case '/' : casa( '/' ); H(); print( "/"); T_linha(); break;
+  }
+}
+
+void H(){
+  switch ( token ){
+    case '-': print("0"); casa ( '-' ); H(); print( "-" ); break;
+    case '+': casa ( '+' ); H(); break;
+    default:
+    FACT();
+    H_linha();
+  }
+}
+
+void H_linha(){
+  switch (token){
+    case '^': casa ( '^' ); FACT(); H_linha(); print("power #"); break;
+  }
+}
+
+void FACT(){
+  F();
+  FACT_linha();
+}
+
+void FACT_linha(){
+  switch (token) {
+    case '!': casa ( '!' ); FACT_linha(); print("fat #");  break;
   }
 }
 
 void F() {
+  string temp = lexema;
+  char next_char = yyinput();
+  while(next_char == ' ' or next_char == '\t') next_char = yyinput();
+  unput(next_char);
   switch( token ) {
     case ID : {
-      string temp = lexema;
-      casa( ID ); print( temp + "@" ); } 
-      break;
+      if (next_char == '('){
+        yyinput();
+        casa(ID);
+        ARGS();
+        casa (')');
+        print(temp + " #");
+        break;
+      } else {
+        casa( ID ); print( temp + " @" ); }
+        break;
+      }
     case CDOUBLE : {
-      string temp = lexema;
       casa( CDOUBLE ); print( temp ); }
       break;
-    case '(': 
+    case CSTR:{
+      casa ( CSTR ); print( temp ); }
+      break;
+    case '(':
       casa( '(' ); E(); casa( ')' ); break;
     default:
       erro( "Operando esperado, encontrado " + lexema );
@@ -155,7 +227,7 @@ void casa( int esperado ) {
   if( token == esperado )
     token = next_token();
   else {
-      cout << "Esperado " << nome_token( esperado ) 
+      cout << "Esperado " << nome_token( esperado )
 	   << " , encontrado: " << nome_token( token ) << endl;
     exit( 1 );
   }
@@ -165,11 +237,17 @@ void casa( int esperado ) {
 int main() {
   token = next_token();
   OP();
-  
-  if( token == 0 )
+  cout << '\n';
+
+  /* if( token == 0 )
     cout << "\nSintaxe ok!" << endl;
-  else
-    cout << "Caracteres encontrados após o final do programa" << endl;
-  
+  else {
+    cout << "Caracteres encontrados após o final do programa:" << endl;
+    while( token != 0 ){
+      cout << lexema << " " << token << "\n";
+      casa (token);
+    }
+  } */
+
   return 0;
 }
