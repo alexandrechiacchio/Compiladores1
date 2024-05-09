@@ -1,20 +1,18 @@
-OP  -> (ATR | PRINT);
+OP  -> (A | P);
 
-PRINT  -> print E
+P  -> print E {Print ( "print #" )}
 
-ATR  -> id { Print( lexema ); } = E { Print( "="); }
+A  -> id { Print( lexema ); } = E { Print( "= ^"); }
 
-ARGS   -> ARGFST ARGSREM
+ARGS   -> ARGFST ARGSREST
 ARGFST -> E
-ARGSRE ->  , E
-         | , E ARGSREM
+ARGSREST -> , E ARGSREST
          | ε
 
 E  -> T E'
 
 E' -> + T { Print( "+"); } E'
     | - T { Print( "-"); } E'
-    | (ARGS)
     | ε
 
 T -> H T'
@@ -23,16 +21,18 @@ T' -> * H { Print( "*"); } T'
     | ε
 
 H -> FACT H'
-    | { Print( "0"); } - FACT { Print( "-"); }
+    | { Print( "0"); } - H { Print( "-"); }
+    | + H
 
-H' -> ^ FACT { Print( " power #"); } H'
-     ε
+H' -> ^ FACT H' { Print( "power #"); }
+    | ε
 
 FACT -> F FACT'
 
-FACT' -> ! { Print( " power #"); }
+FACT' -> !  FACT' { Print( "fat #"); }
        | ε
 
 F -> id { Print(lexema + "@"); }
    | num { Print( lexema ); }
    | ( E )
+   | id(ARGS) {Print( lexema + " #" )}
