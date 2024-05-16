@@ -1,0 +1,1 @@
+In this, the task is to create a crude javascript compiler from a given set of contructions and intructions
