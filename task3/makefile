@@ -5,10 +5,10 @@ tst: out
 	./out
 
 out: lex.yy.c npr.tab.c
-	g++ npr.tab.c -o out -lfl -Wregister
+	g++-9 npr.tab.c -o out -lfl -w
 
 lex.yy.c: npr.l
-	lex npr.l
+	flex npr.l
 
 npr.tab.c: npr.y
 	bison npr.y
