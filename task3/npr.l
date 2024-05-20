@@ -7,6 +7,9 @@ L   	[A-Za-z_]
 INT	    {D}+
 DOUBLE  {D}+"."{D}+([Ee][+\-]?{D}+)?
 ID      {L}({L}|{D})*
+CSTR   \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
+CSTR2   \'([^\'\n\\]|(\\\')|\'\'|'\\\\')+\'
+
 
 %%
 
@@ -16,6 +19,7 @@ ID      {L}({L}|{D})*
 
 {DOUBLE}   { return token( CDOUBLE ); }
 {INT}	   { return token( CINT ); }
+{CSTR}|{CSTR2} { return token ( CSTRING ); }
 
 "&&"	   { return token( AND ); }
 "||"	   { return token( OR ); }
