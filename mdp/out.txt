@@ -1,0 +1,1793 @@
+0: i
+1: & (let)
+2: i
+3: 0
+4: = (set)
+5: ^ (pop)
+6: j
+7: & (let)
+8: j
+9: 0
+10: 1
+11: -
+12: = (set)
+13: ^ (pop)
+14: x
+15: & (let)
+16: x
+17: 9
+18: = (set)
+19: ^ (pop)
+20: b
+21: & (let)
+22: b
+23: [] (newArray)
+24: = (set)
+25: ^ (pop)
+26: i
+27: @ (get)
+28: x
+29: @ (get)
+30: 2
+31: 3
+32: *
+33: -
+34: 2.1
+35: +
+36: <
+37: 41
+38: ? (jumpTrue)
+39: 68
+40: # (goto)
+41: b
+42: @ (get)
+43: i
+44: @ (get)
+45: j
+46: @ (get)
+47: [=] (setProp)
+48: ^ (pop)
+49: i
+50: i
+51: @ (get)
+52: 1
+53: +
+54: = (set)
+55: ^ (pop)
+56: j
+57: i
+58: @ (get)
+59: 2
+60: /
+61: j
+62: @ (get)
+63: +
+64: = (set)
+65: ^ (pop)
+66: 26
+67: # (goto)
+68: j
+69: x
+70: 0
+71: = (set)
+72: = (set)
+73: ^ (pop)
+74: . (halt)
+
+=== Console ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 0; undefined: undefined; x: 0; }|
+=== Pilha ===
+0: i
+1: & (let)
+2: i
+3: 0
+4: = (set)
+5: ^ (pop)
+6: j
+7: & (let)
+8: j
+9: 0
+10: 1
+11: -
+12: = (set)
+13: ^ (pop)
+14: x
+15: & (let)
+16: x
+17: 9
+18: = (set)
+19: ^ (pop)
+20: b
+21: & (let)
+22: b
+23: [] (newArray)
+24: = (set)
+25: ^ (pop)
+26: i
+27: @ (get)
+28: x
+29: @ (get)
+30: 2
+31: 3
+32: *
+33: -
+34: 2.1
+35: +
+36: <
+37: 41
+38: ? (jumpTrue)
+39: 68
+40: # (goto)
+41: b
+42: @ (get)
+43: i
+44: @ (get)
+45: j
+46: @ (get)
+47: [=] (setProp)
+48: ^ (pop)
+49: i
+50: i
+51: @ (get)
+52: 1
+53: +
+54: = (set)
+55: ^ (pop)
+56: j
+57: i
+58: @ (get)
+59: 2
+60: /
+61: j
+62: @ (get)
+63: +
+64: = (set)
+65: ^ (pop)
+66: 26
+67: # (goto)
+68: j
+69: x
+70: 0
+71: = (set)
+72: = (set)
+73: ^ (pop)
+74: . (halt)
+
+=== Console ===
+=== Instrução 0: i ===
+=== Vars ===
+|{ undefined: undefined; }|
+=== Pilha ===
+=== Instrução 1: & (let) ===
+=== Vars ===
+|{ undefined: undefined; }|
+=== Pilha ===
+|i|
+=== Instrução 2: i ===
+=== Vars ===
+|{ i: undefined; undefined: undefined; }|
+=== Pilha ===
+=== Instrução 3: 0 ===
+=== Vars ===
+|{ i: undefined; undefined: undefined; }|
+=== Pilha ===
+|i|
+=== Instrução 4: = (set) ===
+=== Vars ===
+|{ i: undefined; undefined: undefined; }|
+=== Pilha ===
+|i|
+|0|
+=== Instrução 5: ^ (pop) ===
+=== Vars ===
+|{ i: 0; undefined: undefined; }|
+=== Pilha ===
+|0|
+=== Instrução 6: j ===
+=== Vars ===
+|{ i: 0; undefined: undefined; }|
+=== Pilha ===
+=== Instrução 7: & (let) ===
+=== Vars ===
+|{ i: 0; undefined: undefined; }|
+=== Pilha ===
+|j|
+=== Instrução 8: j ===
+=== Vars ===
+|{ i: 0; j: undefined; undefined: undefined; }|
+=== Pilha ===
+=== Instrução 9: 0 ===
+=== Vars ===
+|{ i: 0; j: undefined; undefined: undefined; }|
+=== Pilha ===
+|j|
+=== Instrução 10: 1 ===
+=== Vars ===
+|{ i: 0; j: undefined; undefined: undefined; }|
+=== Pilha ===
+|j|
+|0|
+=== Instrução 11: - ===
+=== Vars ===
+|{ i: 0; j: undefined; undefined: undefined; }|
+=== Pilha ===
+|j|
+|0|
+|1|
+=== Instrução 12: = (set) ===
+=== Vars ===
+|{ i: 0; j: undefined; undefined: undefined; }|
+=== Pilha ===
+|j|
+|-1|
+=== Instrução 13: ^ (pop) ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; }|
+=== Pilha ===
+|-1|
+=== Instrução 14: x ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; }|
+=== Pilha ===
+=== Instrução 15: & (let) ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; }|
+=== Pilha ===
+|x|
+=== Instrução 16: x ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: undefined; }|
+=== Pilha ===
+=== Instrução 17: 9 ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: undefined; }|
+=== Pilha ===
+|x|
+=== Instrução 18: = (set) ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: undefined; }|
+=== Pilha ===
+|x|
+|9|
+=== Instrução 19: ^ (pop) ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|9|
+=== Instrução 20: b ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 21: & (let) ===
+=== Vars ===
+|{ i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 22: b ===
+=== Vars ===
+|{ b: undefined; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 23: [] (newArray) ===
+=== Vars ===
+|{ b: undefined; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 24: = (set) ===
+=== Vars ===
+|{ b: undefined; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+|[ ]|
+=== Instrução 25: ^ (pop) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+|0|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+|0|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ ]|
+|0|
+|-1|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|-1|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|0|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|0|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 0; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|1|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|0.5|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|0.5|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|0.5|
+|-1|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -1; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|-0.5|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|-0.5|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|1|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; ]|
+|1|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; ]|
+|1|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ 0: -1; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; ]|
+|1|
+|-0.5|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|-0.5|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|1|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|1|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 1; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|2|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1|
+|-0.5|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: -0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|0.5|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0.5|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; ]|
+|2|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; ]|
+|2|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; ]|
+|2|
+|0.5|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|0.5|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|2|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|2|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 2; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|3|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|3|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|3|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1.5|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1.5|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|1.5|
+|0.5|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 0.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|3|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; ]|
+|3|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; ]|
+|3|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; ]|
+|3|
+|2|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|2|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|3|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|3|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 3; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|4|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|4|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|4|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2|
+|2|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 2; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|4|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]|
+|4|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]|
+|4|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; ]|
+|4|
+|4|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|4|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|4|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|4|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 4; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|5|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|5|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|5|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2.5|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2.5|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|2.5|
+|4|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 4; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|6.5|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6.5|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|5|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|true|
+|41|
+=== Instrução 41: b ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 42: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|b|
+=== Instrução 43: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]|
+=== Instrução 44: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]|
+|i|
+=== Instrução 45: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]|
+|5|
+=== Instrução 46: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]|
+|5|
+|j|
+=== Instrução 47: [=] (setProp) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|[ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; ]|
+|5|
+|6.5|
+=== Instrução 48: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6.5|
+=== Instrução 49: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 50: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 51: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|i|
+=== Instrução 52: 1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|5|
+=== Instrução 53: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|5|
+|1|
+=== Instrução 54: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 5; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+|6|
+=== Instrução 55: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+=== Instrução 56: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 57: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 58: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|i|
+=== Instrução 59: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|6|
+=== Instrução 60: / ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|6|
+|2|
+=== Instrução 61: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|3|
+=== Instrução 62: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|3|
+|j|
+=== Instrução 63: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|3|
+|6.5|
+=== Instrução 64: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 6.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|9.5|
+=== Instrução 65: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|9.5|
+=== Instrução 66: 26 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 67: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|26|
+=== Instrução 26: i ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 27: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|i|
+=== Instrução 28: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+=== Instrução 29: @ (get) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|x|
+=== Instrução 30: 2 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|9|
+=== Instrução 31: 3 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|9|
+|2|
+=== Instrução 32: * ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|9|
+|2|
+|3|
+=== Instrução 33: - ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|9|
+|6|
+=== Instrução 34: 2.1 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|3|
+=== Instrução 35: + ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|3|
+|2.1|
+=== Instrução 36: < ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|6|
+|5.1|
+=== Instrução 37: 41 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|false|
+=== Instrução 38: ? (jumpTrue) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|false|
+|41|
+=== Instrução 39: 68 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 40: # (goto) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|68|
+=== Instrução 68: j ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+=== Instrução 69: x ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+=== Instrução 70: 0 ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|x|
+=== Instrução 71: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 9; }|
+=== Pilha ===
+|j|
+|x|
+|0|
+=== Instrução 72: = (set) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 9.5; undefined: undefined; x: 0; }|
+=== Pilha ===
+|j|
+|0|
+=== Instrução 73: ^ (pop) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 0; undefined: undefined; x: 0; }|
+=== Pilha ===
+|0|
+=== Instrução 74: . (halt) ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 0; undefined: undefined; x: 0; }|
+=== Pilha ===
+=== Vars ===
+|{ b: [ 0: -1; 1: -0.5; 2: 0.5; 3: 2; 4: 4; 5: 6.5; ]; i: 6; j: 0; undefined: undefined; x: 0; }|
+=== Pilha ===
