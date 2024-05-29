@@ -38,6 +38,7 @@ CSTR2   \'([^\'\n\\]|(\\\')|\'\'|'\\\\')+\'
 "else"     { return token( ELSE ); }
 "print"    { return token( PRINT ); }
 "for"      { return token( FOR ); }
+"while"      { return token( WHILE ); }
 
 {ID}       { return token( ID ); }
 
