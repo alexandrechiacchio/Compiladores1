@@ -1,0 +1,1 @@
+In this, the task is to create a slighty less crude javascript compiler from a given set of contructions and intructions. Now, the stack machine supports funtion calls and activation records.
