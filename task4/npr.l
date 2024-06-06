@@ -1,5 +1,6 @@
 %{
 int token( int tk );
+
 %}
 
 D  	    [0-9]
@@ -19,7 +20,6 @@ CSTR2   \'([^\'\n\\]|(\\\')|\'\'|'\\\\')+\'
 
 {DOUBLE}   { return token( CDOUBLE ); }
 {INT}	   { return token( CINT ); }
-{CSTR}|{CSTR2} { return token ( CSTRING ); }
 
 "&&"	   { return token( AND ); }
 "||"	   { return token( OR ); }
@@ -39,15 +39,37 @@ CSTR2   \'([^\'\n\\]|(\\\')|\'\'|'\\\\')+\'
 "print"    { return token( PRINT ); }
 "for"      { return token( FOR ); }
 "while"      { return token( WHILE ); }
+"function" { return token( FUNCTION ); }
+"return" { return token( RETURN ); }
 
+"asm{".*"}"  { return token(ASM); }
+
+{CSTR}|{CSTR2} { return token ( CSTRING ); }
 {ID}       { return token( ID ); }
 
 .          { return token( *yytext ); }
 
 %%
 
+
+vector<string> tokeniza(string s){
+  vector<string> ret;
+  int last = 4;
+  for(int i = 4; i<s.size()-1; i++){
+    if(s[i] == ' '){
+      ret.push_back(s.substr(last, i-last));
+      last = i+1;
+    }
+  }
+  ret.push_back(s.substr(last, s.size()-1-last));
+  return ret;
+}
+
 int token( int tk ) {
   yylval.c = vector<string>{ yytext };
+  if(tk == ASM){
+    yylval.c = tokeniza(yylval.c[0]);
+  }
   coluna += strlen( yytext );
 
   yylval.linha = linha;
