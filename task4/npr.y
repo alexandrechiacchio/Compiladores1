@@ -109,12 +109,13 @@ void print( vector<string> codigo ) {
 %}
 
 %token ID IF ELSE LET CONST VAR PRINT FOR WHILE FUNCTION RETURN ASM
-%token CDOUBLE CSTRING CINT
+%token CDOUBLE CSTRING CINT CBOOL
 %token AND OR ME_IG MA_IG DIF IGUAL
 %token MAIS_IGUAL MAIS_MAIS
 
 %right '=' MAIS_IGUAL
-%nonassoc AND OR
+%left OR
+%left AND
 %nonassoc IGUAL DIF
 %nonassoc '<' '>' ME_IG MA_IG
 %left '+' '-'
@@ -122,7 +123,6 @@ void print( vector<string> codigo ) {
 %right MAIS_MAIS
 %nonassoc '[' '('
 %left '.'
-
 
 %%
 
@@ -150,8 +150,9 @@ CMD : CMD_LET ';'
     | CMD_ASM ';'
     | E PP1s
       { $$.c = $1.c + "^"; };
-    | '{' CMDs '}' PPs
-      { $$.c = $2.c; }
+    | '{' EMPILHA_TS CMDs '}' PPs
+      { $$.c = "<{" + $3.c + "}>";
+        ts.pop_back();}
     ;
 
 PP1s : ';' PPs
@@ -164,15 +165,15 @@ PPs : PP PPs
 PP : ';'
    ;
 
-CMD_ASM : E ASM { $$.c = $1.c + $2.c; }
+CMD_ASM : E ASM { $$.c = $1.c + $2.c + "^"; }
         ;
 
 EMPILHA_TS : { ts.push_back( map< string, Simbolo >{} ); }
            ;
 
-CMD_FUNC : FUNCTION ID { declara_var( Var, $2.c[0], $2.linha, $2.coluna ); }
+CMD_FUNC : FUNCTION ID { declara_var( Var, $2.c[0], $2.linha, $2.coluna ); in_func++;}
 
-             '(' EMPILHA_TS LISTA_PARAMs ')' '{' CMDs '}'
+             '(' EMPILHA_TS LISTA_PARAMs ')' '{' CMDs '}' PPs
            {
              string lbl_endereco_funcao = gera_label( "func_" + $2.c[0] );
              string definicao_lbl_endereco_funcao = ":" + lbl_endereco_funcao;
@@ -183,6 +184,7 @@ CMD_FUNC : FUNCTION ID { declara_var( Var, $2.c[0], $2.linha, $2.coluna ); }
             funcoes = funcoes + definicao_lbl_endereco_funcao + $6.c + $9.c +
                        "undefined" + "@" + "'&retorno'" + "@"+ "~";
              ts.pop_back();
+             in_func--;
            }
          ;
 
@@ -192,11 +194,18 @@ LISTA_PARAMs : PARAMs
 
 PARAMs : PARAMs ',' PARAM
        { // a & a arguments @ 0 [@] = ^
-         $$.c = $1.c + $3.c + "&" + $3.c + "arguments" + "@" + to_string( $1.contador )
-                + "[@]" + "=" + "^";
+         $$.c = $1.c + $3.c + "&" + $3.c + "arguments" + "@" + to_string( $1.contador ) + "[@]" + "=" + "^";
 
          if( $3.valor_default.size() > 0 ) {
-           // Gerar código para testar valor default.
+            string lbl_fim = gera_label( "fim_default" );
+            string definicao_fim = ":" + lbl_fim;
+            string lbl_set_default = gera_label ("set_default" );
+            string definicao_set_default = ":" + lbl_set_default;
+           $$.c = $$.c + "arguments" + "@" + to_string( $1.contador ) + "[@]" + "undefined" + "@" + "==" + lbl_set_default + "?" +
+                       lbl_fim + "#" +
+                      definicao_set_default +
+                      $3.c + $3.valor_default + "=" + "^" +
+                      definicao_fim;
          }
          $$.contador = $1.contador + $3.contador;
        }
@@ -205,7 +214,15 @@ PARAMs : PARAMs ',' PARAM
          $$.c = $1.c + "&" + $1.c + "arguments" + "@" + "0" + "[@]" + "=" + "^";
 
          if( $1.valor_default.size() > 0 ) {
-           // Gerar código para testar valor default.
+           string lbl_fim = gera_label( "fim_default" );
+            string definicao_fim = ":" + lbl_fim;
+            string lbl_set_default = gera_label ("set_default" );
+            string definicao_set_default = ":" + lbl_set_default;
+           $$.c = $$.c + "arguments" + "@" + "0" + "[@]" + "undefined" + "@" + "==" + lbl_set_default + "?" +
+                        lbl_fim + "#" +
+                        definicao_set_default +
+                        $1.c + $1.valor_default + "=" + "^" +
+                        definicao_fim;
          }
          $$.contador = $1.contador;
        }
@@ -224,6 +241,7 @@ PARAM : ID
         $$.valor_default = $3.c;
         declara_var( Let, $1.c[0], $1.linha, $1.coluna );
       }
+    /* | ID = {} */
     ;
 
 CMD_RET : RETURN E { $$.c = $2.c + "\'&retorno\'" + "@" + "~"; }
@@ -368,12 +386,26 @@ LISTVALS : LISTVAL ',' LISTVALS   { $$.c = $1.c + $3.c; }
 LISTVAL : E
         ;
 
+LISTA_ARGS : ARGS {$$.contador = $1.contador; }
+           | { $$.clear(); }
+           ;
+
+ARGS : ARG ',' ARGS   { $$.c = $1.c + $3.c; $$.contador = $3.contador+1; }
+      | ARG  { $$.contador++; }
+      ;
+
+ARG : E
+    | '{' '}' { $$.c = vector<string> {"{}"}; }
+    ;
+
 E : LVALUE '=' '{' '}'
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + "{}" + "="; }
   | LVALUE '=' E
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
   | LVALUEPROP '=' E
      {$$.c = $1.c + $3.c + "[=]"; }
+  | LVALUEPROP '=' '{' '}'
+     {$$.c = $1.c + "{}" + "[=]"; }
   | E '<' E
     { $$.c = $1.c + $3.c + $2.c; }
   | E IGUAL E
@@ -392,6 +424,16 @@ E : LVALUE '=' '{' '}'
     { $$.c = $1.c + $3.c + $2.c; }
   | E '%' E
     { $$.c = $1.c + $3.c + $2.c; }
+  | E AND E
+    { $$.c = $1.c + $3.c + $2.c; }
+  | E OR E
+    { $$.c = $1.c + $3.c + $2.c; }
+  | E MA_IG E
+    { $$.c = $1.c + $3.c + $2.c; }
+  | E ME_IG E
+    { $$.c = $1.c + $3.c + $2.c; }
+  | E DIF E
+    { $$.c = $1.c + $3.c + $2.c; }
   | LVALUE MAIS_IGUAL E
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $1.c + "@" + $3.c + "+" + "="; }
   | LVALUEPROP MAIS_IGUAL E
@@ -403,6 +445,7 @@ E : LVALUE '=' '{' '}'
   | CDOUBLE
   | CINT
   | CSTRING
+  | CBOOL
   | LVALUE
     { checa_simbolo( $1.c[0], false ); $$.c = $1.c + "@"; }
   | LVALUEPROP
@@ -412,8 +455,8 @@ E : LVALUE '=' '{' '}'
     { $$.c = $2.c; }
   | '(' '{' '}' ')'
     { $$.c = vector<string>{"{}"}; }
-  | LVALUE '(' LISTVALS ')'
-    { checa_simbolo( $1.c[0], false ); $$.c = $3.c + $1.c + "@" + "$"; }
+  | E '(' LISTA_ARGS ')'
+    { checa_simbolo( $1.c[0], false ); $$.c = $3.c + to_string($3.contador) + $1.c + "$"; }
   ;
 
 
@@ -426,6 +469,7 @@ vector<string> declara_var( TipoDecl tipo, string nome, int linha, int coluna ) 
 
   auto& topo = ts.back();
 
+
   if( topo.count( nome ) == 0 ) {
     topo[nome] = Simbolo{ tipo, linha, coluna };
     return vector<string>{ nome, "&" };
@@ -435,7 +479,7 @@ vector<string> declara_var( TipoDecl tipo, string nome, int linha, int coluna ) 
     return vector<string>{};
   }
   else {
-    cerr << "Erro: a variável '" << nome << "' ja foi declarada na linha " << topo[nome].linha << "." << endl;
+    cerr << "Erro: a variável '" << nome << "' já foi declarada na linha " << topo[nome].linha << "." << endl;
     exit( 1 );
   }
 }
@@ -452,8 +496,9 @@ void checa_simbolo( string nome, bool modificavel ) {
       else return;
     }
   }
-    cerr << "Erro: a variável '" << nome << "' não foi declarada." << endl;
-    exit( 1 );
+  if(in_func == 0){ cerr << "Erro: a variável '" << nome << "' não foi declarada." << endl;
+              exit( 1 );
+  }
 }
 
 void yyerror( const char* st ) {

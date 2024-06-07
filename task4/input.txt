@@ -1,19 +1,20 @@
-let a = [], b = [], c = [];
-let i, j, k;
-for( i = 0; i < 4; i = i + 1 ) {
-  a[i] = [];
-  b[i] = [];
-  for( j = 0; j < 4; j += 1 ) {
-    a[i][j] = b[i][j] = 1.1/(i+j+1.0);;
-  }
+function f( x = 9, y = 8.1 ) {
+  log( 'Parametros: ' ); log( x ); log( ' ' ); log( y, true );
+  return x + y;
 }
 
-for( i = 0; i < 4; i = i + 1 ) {
-  c[i] = [];
-  for( j = 0; j < 4; j = j + 1 ) {
-    c[i][j] = 0;
-    for( k = 0; k < 4; k = k + 1 ) {
-      c[i][j] = c[i][j] + a[i][k] * b[k][j];
-    }
-  }
-} 
+function log( msg = 'Default!', pular_linha = false ) {
+  if( pular_linha )
+    msg asm{println # undefined};
+  else
+    msg asm{print # undefined};
+}
+
+log();
+log( '-', true );
+log( f(), true );
+log( 'F = ' + f(), true );
+let x = f(),
+    a = f( 1 ),
+    b = f( false, 8 ),
+    c = f( 1, 2 );
