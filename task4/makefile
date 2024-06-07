@@ -14,4 +14,4 @@ npr.tab.c: npr.y
 	bison npr.y
 
 clean:
-	rm -f lex.yy.c npr.tab.c out
+	rm -f lex.yy.c npr.tab.c out npr.output
