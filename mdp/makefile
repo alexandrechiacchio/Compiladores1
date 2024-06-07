@@ -8,7 +8,7 @@ debug2file: interpretador
 	./interpretador debug > out.txt
 
 clean:
-	rm lex.yy.mdp.c lex.yy.mdp.o interpretador out.txt
+	rm -f lex.yy.mdp.c lex.yy.mdp.o interpretador out.txt
 
 interpretador: lex.yy.mdp.o var_object.cc mdp.h mdp.cc
 	 g++ -Wall -std=c++17 lex.yy.mdp.o mdp.cc -ll -lfl -o interpretador
