@@ -50,6 +50,7 @@ vector< map< string, Simbolo > > ts = { map< string, Simbolo >{} };
 vector<string> funcoes;
 
 vector<string> declara_var( TipoDecl tipo, string nome, int linha, int coluna );
+void checa_in_func();
 void checa_simbolo( string nome, bool modificavel );
 
 #define YYSTYPE Atributos
@@ -108,12 +109,16 @@ void print( vector<string> codigo ) {
 
 %}
 
-%token ID IF ELSE LET CONST VAR PRINT FOR WHILE FUNCTION RETURN ASM
+%token ID IF ELSE LET CONST VAR PRINT FOR WHILE FUNCTION RETURN ASM SETA
 %token CDOUBLE CSTRING CINT CBOOL
 %token AND OR ME_IG MA_IG DIF IGUAL
 %token MAIS_IGUAL MAIS_MAIS
+%token PARENTESES_FUNCAO
 
-%right '=' MAIS_IGUAL
+%left ','
+%nonassoc MAIS_IGUAL
+
+%right '='  SETA':'
 %left OR
 %left AND
 %nonassoc IGUAL DIF
@@ -121,7 +126,7 @@ void print( vector<string> codigo ) {
 %left '+' '-'
 %left '*' '/' '%'
 %right MAIS_MAIS
-%nonassoc '[' '('
+%right '[' '('
 %left '.'
 
 %%
@@ -155,6 +160,7 @@ CMD : CMD_LET ';'
         ts.pop_back();}
     ;
 
+
 PP1s : ';' PPs
      ;
 
@@ -171,8 +177,23 @@ CMD_ASM : E ASM { $$.c = $1.c + $2.c + "^"; }
 EMPILHA_TS : { ts.push_back( map< string, Simbolo >{} ); }
            ;
 
-CMD_FUNC : FUNCTION ID { declara_var( Var, $2.c[0], $2.linha, $2.coluna ); in_func++;}
+ANON_FUNC : FUNCTION { in_func++; }
 
+             '(' EMPILHA_TS LISTA_PARAMs ')' '{' CMDs '}'
+           {
+             string lbl_endereco_funcao = gera_label( "func_" + $5.c[0] );
+             string definicao_lbl_endereco_funcao = ":" + lbl_endereco_funcao;
+
+
+             $$.c = vector<string>{"{}"} + "'&funcao'" + lbl_endereco_funcao + "[<=]";
+            funcoes = funcoes + definicao_lbl_endereco_funcao + $5.c + $8.c +
+                       "undefined" + "@" + "'&retorno'" + "@"+ "~";
+             ts.pop_back();
+             in_func--;
+           }
+         ;
+
+CMD_FUNC : FUNCTION ID { declara_var( Var, $2.c[0], $2.linha, $2.coluna ); in_func++;}
              '(' EMPILHA_TS LISTA_PARAMs ')' '{' CMDs '}' PPs
            {
              string lbl_endereco_funcao = gera_label( "func_" + $2.c[0] );
@@ -244,7 +265,10 @@ PARAM : ID
     /* | ID = {} */
     ;
 
-CMD_RET : RETURN E { $$.c = $2.c + "\'&retorno\'" + "@" + "~"; }
+CMD_RET : RETURN E
+          { checa_in_func(); $$.c = $2.c + "\'&retorno\'" + "@" + "~"; }
+        | RETURN OBJECT
+          { checa_in_func(); $$.c = $2.c + "\'&retorno\'" + "@" + "~"; }
         ;
 
 CMD_FOR : FOR '(' PRIM_E ';' E ';' E ')' CMD
@@ -298,10 +322,18 @@ LET_VAR : ID
           {
             $$.c = declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
                    $1.c + $3.c + "=" + "^"; }
+        | ID '=' OBJECT
+          {
+            $$.c = declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
+                   $1.c + $3.c + "=" + "^"; }
         | ID '=' '{' '}'
           {
             $$.c = declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
                    $1.c + "{}" + "=" + "^"; }
+        | ID '=' ANON_FUNC
+          {
+            $$.c = declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
+                   $1.c + $3.c + "=" + "^"; }
         ;
 
 CMD_VAR : VAR VAR_VARs { $$.c = $2.c; }
@@ -375,15 +407,21 @@ LVALUEPROP : E '[' E ']' { $$.c = $1.c + $3.c; }
            | E '.' ID { $$.c = $1.c + $3.c; }
            ;
 
-LIST  : '[' LISTVALS ']' { $$.c = $1.c + $2.c + $3.c; }
-      | '[' ']' { $$.c = vector<string>{"[]"}; }
+LIST  : '[' LISTVALS ']'
+        { $$.c = "[]" + $2.c; }
+      | '[' ']'
+        { $$.c = vector<string>{"[]"}; }
       ;
 
-LISTVALS : LISTVAL ',' LISTVALS   { $$.c = $1.c + $3.c; }
-         | LISTVAL
-         ;
+LISTVALS  : LISTVALS ',' LISTVAL
+            { $$.c = $1.c + to_string($1.contador + 1) + $3.c + "[<=]" ; $$.contador = $1.contador+1; }
+          | LISTVAL
+            { $$.c = vector<string>{"0"} + $1.c + "[<=]";}
+          ;
 
 LISTVAL : E
+        | '{' '}' { $$.c = vector<string>{"{}"}; }
+        | OBJECT
         ;
 
 LISTA_ARGS : ARGS {$$.contador = $1.contador; }
@@ -402,10 +440,18 @@ E : LVALUE '=' '{' '}'
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + "{}" + "="; }
   | LVALUE '=' E
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
+  | LVALUE '=' OBJECT
+    { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
+  | LVALUE '=' ANON_FUNC
+    { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
   | LVALUEPROP '=' E
-     {$$.c = $1.c + $3.c + "[=]"; }
+    { $$.c = $1.c + $3.c + "[=]"; }
   | LVALUEPROP '=' '{' '}'
-     {$$.c = $1.c + "{}" + "[=]"; }
+    { $$.c = $1.c + "{}" + "[=]"; }
+  | LVALUEPROP '=' OBJECT
+    { $$.c = $1.c + $3.c + "[=]"; }
+  | LVALUEPROP '=' ANON_FUNC
+    { $$.c = $1.c + $3.c + "[=]"; }
   | E '<' E
     { $$.c = $1.c + $3.c + $2.c; }
   | E IGUAL E
@@ -456,8 +502,81 @@ E : LVALUE '=' '{' '}'
   | '(' '{' '}' ')'
     { $$.c = vector<string>{"{}"}; }
   | E '(' LISTA_ARGS ')'
-    { checa_simbolo( $1.c[0], false ); $$.c = $3.c + to_string($3.contador) + $1.c + "$"; }
+    { $$.c = $3.c + to_string($3.contador) + $1.c + "$"; }
+  | ARROW_FUNC
   ;
+
+
+
+OBJECT  :'{' LISTA_CAMPOS '}'
+          { $$.c = vector<string>{"{}"} + $2.c; }
+        ;
+
+LISTA_CAMPOS  : CAMPOS
+              ;
+
+CAMPOS  : CAMPOS ',' CAMPO { $$.c = $1.c + $3.c; }
+        | CAMPO
+        ;
+
+CAMPO : ID ':' E { $$.c = $1.c + $3.c + "[<=]"; }
+      | ID ':' OBJECT { $$.c = $1.c + $3.c + "[<=]"; }
+      ;
+
+
+ARROW_FUNC  : ID SETA EMPILHA_TS { in_func++; } E
+              { string lbl_funcao = gera_label( "funcao" );
+                string define_lbl_funcao = ":" + lbl_funcao;
+
+                $$.c = vector<string>{ "{}" } + "'&funcao'" + lbl_funcao + "[<=]";
+                funcoes = funcoes + define_lbl_funcao +
+                declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
+                $1.c + "arguments" + "@" + "0" + "[@]" + "=" + "^" +
+                $5.c + "'&retorno'" + "@"+ "~";
+
+                ts.pop_back();
+                in_func--;
+              }
+            | ID SETA EMPILHA_TS { in_func++; }  '{' CMDs '}'
+            {  string lbl_funcao = gera_label( "funcao" );
+              string define_lbl_funcao = ":" + lbl_funcao;
+
+              $$.c = vector<string>{ "{}" } + "'&funcao'" + lbl_funcao + "[<=]";
+
+              funcoes = funcoes + define_lbl_funcao +
+              declara_var( Let, $1.c[0], $1.linha, $1.coluna ) +
+              $1.c + "arguments" + "@" + "0" + "[@]" + "=" + "^" +
+              $6.c + "undefined" + "@" + "'&retorno'" + "@"+ "~";
+
+              ts.pop_back();
+              in_func--;
+            }
+            | '(' PARENTESES_FUNCAO SETA EMPILHA_TS { in_func++; }  E
+              { string lbl_funcao = gera_label( "funcao" );
+                string define_lbl_funcao = ":" + lbl_funcao;
+
+                $$.c = vector<string>{ "{}" } + "'&funcao'" + lbl_funcao + "[<=]";
+                funcoes = funcoes + define_lbl_funcao +
+                $6.c + "'&retorno'" + "@"+ "~";
+
+                ts.pop_back();
+                in_func--;
+              }
+            | '(' PARAMs PARENTESES_FUNCAO SETA EMPILHA_TS { in_func++; } E
+              { string lbl_funcao = gera_label( "funcao" );
+                string define_lbl_funcao = ":" + lbl_funcao;
+
+                $$.c = vector<string>{ "{}" } + "'&funcao'" + lbl_funcao + "[<=]";
+                funcoes = funcoes + define_lbl_funcao +
+                $2.c +
+                $7.c + "'&retorno'" + "@"+ "~";
+
+                ts.pop_back();
+                in_func--;
+              }
+            | '(' PARENTESES_FUNCAO SETA EMPILHA_TS '{' CMDs '}'
+            | '(' PARAMs PARENTESES_FUNCAO SETA EMPILHA_TS'{' CMDs '}'
+            ;
 
 
 %%
@@ -466,7 +585,6 @@ E : LVALUE '=' '{' '}'
 
 vector<string> declara_var( TipoDecl tipo, string nome, int linha, int coluna ) {
   /* cerr << "insere_simbolo( " << tipo << ", " << nome << ", " << linha << ", " << coluna << ")" << endl; */
-
   auto& topo = ts.back();
 
 
@@ -481,6 +599,13 @@ vector<string> declara_var( TipoDecl tipo, string nome, int linha, int coluna ) 
   else {
     cerr << "Erro: a variável '" << nome << "' já foi declarada na linha " << topo[nome].linha << "." << endl;
     exit( 1 );
+  }
+}
+
+void checa_in_func(){
+  if(!in_func){
+    cerr << "Erro: Não é permitido 'return' fora de funções." << endl;
+    exit(1);
   }
 }
 
