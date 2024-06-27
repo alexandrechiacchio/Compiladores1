@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define YYDEBUG 1
+
 int linha = 1, coluna = 0;
 
 struct Atributos {
@@ -108,7 +110,7 @@ void print( vector<string> codigo ) {
 
 
 %}
-
+%define parse.error verbose
 %token ID IF ELSE LET CONST VAR PRINT FOR WHILE FUNCTION RETURN ASM SETA
 %token CDOUBLE CSTRING CINT CBOOL
 %token AND OR ME_IG MA_IG DIF IGUAL
@@ -262,7 +264,7 @@ PARAM : ID
         $$.valor_default = $3.c;
         declara_var( Let, $1.c[0], $1.linha, $1.coluna );
       }
-    /* | ID = {} */
+    /* | ID '=' {} */
     ;
 
 CMD_RET : RETURN E
@@ -400,8 +402,7 @@ CMD_IF : IF '(' E ')' CMD
          }
        ;
 
-LVALUE : ID
-       ;
+
 
 LVALUEPROP : E '[' E ']' { $$.c = $1.c + $3.c; }
            | E '.' ID { $$.c = $1.c + $3.c; }
@@ -436,13 +437,13 @@ ARG : E
     | '{' '}' { $$.c = vector<string> {"{}"}; }
     ;
 
-E : LVALUE '=' '{' '}'
+E : ID '=' '{' '}'
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + "{}" + "="; }
-  | LVALUE '=' E
+  | ID '=' E
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
-  | LVALUE '=' OBJECT
+  | ID '=' OBJECT
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
-  | LVALUE '=' ANON_FUNC
+  | ID '=' ANON_FUNC
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $3.c + "="; }
   | LVALUEPROP '=' E
     { $$.c = $1.c + $3.c + "[=]"; }
@@ -480,11 +481,11 @@ E : LVALUE '=' '{' '}'
     { $$.c = $1.c + $3.c + $2.c; }
   | E DIF E
     { $$.c = $1.c + $3.c + $2.c; }
-  | LVALUE MAIS_IGUAL E
+  | ID MAIS_IGUAL E
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + $1.c + "@" + $3.c + "+" + "="; }
   | LVALUEPROP MAIS_IGUAL E
     { $$.c = $1.c + $1.c + "[@]" + $3.c + "+" + "[=]"; }
-  | LVALUE MAIS_MAIS
+  | ID MAIS_MAIS
     { checa_simbolo( $1.c[0], true ); $$.c = $1.c + "@" + $1.c + $1.c + "@" + "1" + "+" + "=" + "^"; }
   | LVALUEPROP MAIS_MAIS
     { $$.c = $1.c + $1.c + "[@]" + "1" + "+" + "[=]"; }
@@ -492,7 +493,7 @@ E : LVALUE '=' '{' '}'
   | CINT
   | CSTRING
   | CBOOL
-  | LVALUE
+  | ID
     { checa_simbolo( $1.c[0], false ); $$.c = $1.c + "@"; }
   | LVALUEPROP
     { $$.c = $1.c + "[@]"; }
@@ -633,6 +634,7 @@ void yyerror( const char* st ) {
 }
 
 int main( int argc, char* argv[] ) {
+  /* yydebug = 1; */
   yyparse();
   return 0;
 }
